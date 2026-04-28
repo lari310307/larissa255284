@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -21,7 +22,7 @@ const routes = require('./router/router');
 app.use('/api', routes);
 
 // Configuração da conexão com o Banco de Dados (MongoDB Atlas)
-const mongoURL = "mongodb://larissa255284:255284@cluster0-shard-00-00.hpsy3y6.mongodb.net:27017,cluster0-shard-00-01.hpsy3y6.mongodb.net:27017,cluster0-shard-00-02.hpsy3y6.mongodb.net:27017/todo-db?ssl=true&replicaSet=atlas-hpsy3y6-shard-0&authSource=admin&retryWrites=true&w=majority";
+const mongoURI = process.env.MONGO_URL;
 
 mongoose.connect(mongoURL);
 mongoose.Promise = global.Promise;
