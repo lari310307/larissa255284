@@ -22,9 +22,9 @@ const routes = require('./router/router');
 app.use('/api', routes);
 
 // Configuração da conexão com o Banco de Dados (MongoDB Atlas)
-const mongoURI = process.env.MONGO_URL;
+const mongoURI = process.env.MONGO_URI;
 
-mongoose.connect(mongoURL);
+mongoose.connect(mongoURI);
 mongoose.Promise = global.Promise;
 const db = mongoose.connection;
 
