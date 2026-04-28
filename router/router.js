@@ -31,5 +31,15 @@ router.get('/getAll', async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+router.delete('/delete/:id', async (req, res) => {
+    try {
+        const id = req.params.id;
+        // O Mongoose usa findByIdAndDelete
+        const dados = await modeloTarefa.findByIdAndDelete(id);
+        res.send(`Documento com o nome ${dados.descricao} foi deletado.`);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
 
 module.exports = router;
